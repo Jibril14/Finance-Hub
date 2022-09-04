@@ -26,7 +26,7 @@ class UserAdminClass(BaseAdmin):
         ),
         (
             _("Permissions and Groups"),
-            {"fields": ("is_active", "is_staff", "is_superuser", "group", "user_permissions")}
+            {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")}
         ),
         (
             _("Important Dates"), {"fields": ("last_login", "date_joined")}
@@ -34,8 +34,9 @@ class UserAdminClass(BaseAdmin):
     )
     add_fieldsets = (
         (None, {
-            "classes": ("wide",),
-            "fields": ("email", "password1", "password2" "is_staff", "is_active")
+            #"classes": ("wide",),
+            "fields": ("email", "password1", "password2", "username","first_name", "last_name",
+             "is_staff", "is_active")
         }),
     )
     search_fields = ["email", "username", "first_name", "last_name"]

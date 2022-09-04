@@ -6,7 +6,7 @@
 .idea
 frontend/node_modules
 node_modules/
-MYDOC.txt
+MYDOC
 /.pnp
 .pnp.js
 

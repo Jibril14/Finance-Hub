@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'djoser',
     # local apps
     'apps.users',
+    'apps.category',
 ]
 
 MIDDLEWARE = [

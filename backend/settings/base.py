@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'djoser',
+    'django_summernote',
     # local apps
     'apps.users',
     'apps.category',
@@ -108,7 +109,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIR = []
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -155,3 +157,8 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer'
     },
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'uploads'
+
+SUMMERNOTE_THEME = 'bs4'

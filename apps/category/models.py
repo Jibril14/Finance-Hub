@@ -1,10 +1,6 @@
-from re import T
-from tabnanny import verbose
-from unicodedata import category
 from django.db import models
-from datetime import datetime
 from django.utils.translation import gettext_lazy as _
-from django.template.defaultfilters import slugify
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100,  verbose_name=_("Category Name"), unique=True)

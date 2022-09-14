@@ -6,19 +6,15 @@ from apps.comments.serializers import CommentSerializer
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source="author.username")
     category = serializers.SerializerMethodField(read_only=True)
-    post_views = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        fields = ['title', 'slug', 'photo1', 'photo2', 'photo3', 'excerpt', 'content', 'post_views',
+        fields = ['title', 'slug', 'photo1', 'photo2', 'photo3', 'excerpt', 'content', 'views',
                   'date_created', 'last_updated', 'author', 'category', 'comments']
 
     def get_category(self, obj):
         return obj.category.category_name
-
-    def get_post_views(self, obj):
-        return PostViews.objects.filter(post=obj).count()
 
     def get_comments(self, obj):
         comments = obj.comment_set.all()

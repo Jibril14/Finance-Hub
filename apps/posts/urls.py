@@ -7,5 +7,4 @@ urlpatterns = [
          name='post_detail'),
     path('post/<str:category_slug>/', views.PostByCategoryView.as_view(),
          name='post_by_category'),
-
 ]

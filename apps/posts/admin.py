@@ -11,7 +11,7 @@ class CommentInstanceInline(admin.TabularInline):
 class PostAdmin(admin.ModelAdmin):
     list_filter = ('author', 'date_created', 'category')
     list_display_links = ['id', 'title']
-    list_display = ('id', 'title', 'views', 'date_created', 'last_updated', 'category', 'views', 'author')
+    list_display = ('id', 'title', 'date_created', 'last_updated', 'category', 'views', 'author')
     list_per_page = 25
     inlines = [CommentInstanceInline]
     prepopulated_fields = {'slug': ('title',)}

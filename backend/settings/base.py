@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'djoser',
     'django_summernote',
+    'django_filters',
     # local apps
     'apps.users',
     'apps.category',

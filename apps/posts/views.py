@@ -1,3 +1,5 @@
+from cgitb import lookup
+from msilib.schema import Property
 from urllib import request
 from django.shortcuts import render
 from apps.category.models import Category
@@ -5,9 +7,24 @@ from .pagination import PostPagination
 from .models import Post, PostViews
 from .serializers import PostSerializer
 from rest_framework.response import Response
-from rest_framework import generics, permissions, status
-from rest_framework.exceptions import APIException
+from rest_framework import generics, permissions, status, filters
+#from rest_framework.exceptions import APIException
 from rest_framework.views import APIView
+import django_filters
+from django_filters.rest_framework import DjangoFilterBackend
+
+
+class PostFilter(django_filters.FilterSet):
+    post_category = django_filters.CharFilter(
+        field_name = "category__category_name", lookup_expr="iexact"
+    ) 
+    popular_posts = django_filters.NumberFilter(field_name="views", lookup_expr="gt")
+    recent_posts = django_filters.NumberFilter(field_name="views", lookup_expr="lt") 
+  
+   
+    class Meta:
+        model = Post
+        fields = ["category", "views"]
 
 
 class PostListView(generics.ListAPIView):
@@ -15,6 +32,14 @@ class PostListView(generics.ListAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = PostPagination
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.SearchFilter,
+        filters.OrderingFilter,
+    ]
+    filterset_class = PostFilter
+    search_fields = ["category", "views"]
+    ordering_fields = ["date_created"]
 
 
 class PostDetailView(APIView):
@@ -32,10 +57,3 @@ class PostDetailView(APIView):
         serializer = PostSerializer(post, context={"request": request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-
-class PostByCategoryView(generics.ListAPIView):
-    permission_classes = [permissions.AllowAny]
-    serializer_class = PostSerializer
-
-    def get_queryset(self):
-        return Post.objects.filter(category__slug=self.kwargs["category_slug"])

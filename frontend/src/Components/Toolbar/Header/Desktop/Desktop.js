@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Desktop.module.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,27 +7,34 @@ import Button from "../../../Ui/Button/Button";
 import { SearchBar } from "../../../Ui/SearchBar/SearchBar";
 import Rectangle from "../Rectangle/Rectangle";
 import { Tab, Tabs } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function Desktop() {
     const date = new Date();
+    const [value, setValue] = useState(0);
+
     return (
         <div className={classes.Desk}>
-            <Rectangle bcolor="gray" height="40px">
-                <p>{date.toString()}</p>
+            <Rectangle bcolor="gray" height="40px" padding="0 7px">
+                <p>{date.toDateString()}</p>
             </Rectangle>
             <div className={classes.Desktop}>
                 <div>
-                    <h3>
-                        <a href="/"> Finance Hub</a>
+                    <h3 style={{ marginBottom: "3px" }}>
+                        <Link to="/"> Finance Hub</Link>
                     </h3>
-                    <p>Your home of finance</p>
+                    <p style={{ marginTop: "0" }}>Your home of finance</p>
                 </div>
                 <Rectangle bcolor="red" width="400px" height="40px"></Rectangle>
                 <div>
-                    <Button variant="contained">Sign Up</Button>
-                    <Button disabled variant="contained">
-                        Log In
-                    </Button>
+                    <Link to="/register">
+                        <Button variant="contained" style={{ color: "#fff" }}>
+                            Sign Up
+                        </Button>
+                    </Link>
+                    <Link to="/login">
+                        <Button variant="contained">Log In</Button>
+                    </Link>
                 </div>
             </div>
             <Box sx={{ flexGrow: 1, height: "100px" }}>
@@ -42,18 +49,31 @@ export default function Desktop() {
                         <div>
                             <Tabs
                                 textColor="inherit"
-                                value={1}
+                                value={value}
+                                onChange={(e, newValue) => setValue(newValue)}
                                 indicatorColor="secondary"
                             >
-                                <Tab label="Home"></Tab>
-                                <Tab label="Business"></Tab>
-                                <Tab label="Finance"></Tab>
-                                <Tab label="Tech"></Tab>
-                                <Tab label="Market"></Tab>
-                                <Tab label="Sport"></Tab>
-                                <Tab label="Music"></Tab>
-                                <Tab label="Economics"></Tab>
-                                <Tab label="News"></Tab>
+                                <Tab component={Link} to="/" label="Home" />
+                                <Tab
+                                    component={Link}
+                                    to="/order"
+                                    label="Business"
+                                />
+                                <Tab
+                                    component={Link}
+                                    to="/default"
+                                    label="Finance"
+                                />
+                                <Tab component={Link} to="/" label="Tech" />
+                                <Tab component={Link} to="/" label="Market" />
+                                <Tab component={Link} to="/" label="Sport" />
+                                <Tab component={Link} to="/" label="Music" />
+                                <Tab
+                                    component={Link}
+                                    to="/"
+                                    label="Economics"
+                                />
+                                <Tab component={Link} to="/" label="News" />
                             </Tabs>
                         </div>
 

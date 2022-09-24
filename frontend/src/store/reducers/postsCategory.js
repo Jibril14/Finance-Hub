@@ -1,6 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
 
-
 const initialState = {
     posts: [],
     loading: false,
@@ -10,22 +9,23 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.FETCH_ALL_POSTS_START:
+        case actionTypes.FETCH_POSTS_BY_CATEGORY_START:
             return {
                 ...state,
                 loading: true
             };
-        case actionTypes.FETCH_ALL_POSTS_SUCCESS:
+        case actionTypes.FETCH_POSTS_BY_CATEGORY_SUCCESS:
             return {
                 ...state,
-                posts: action.posts, //Post object from server
-                loading: false
+                posts: action.posts, 
+                loading: false,
+                
             };
 
-        case actionTypes.FETCH_ALL_POST_FAIL:
+        case actionTypes.FETCH_POSTS_BY_CATEGORY_FAIL:
             return {
                 ...state,
-                error: action.err, //Error message dispatch
+                error: action.err, 
                 loading: false
             };
 

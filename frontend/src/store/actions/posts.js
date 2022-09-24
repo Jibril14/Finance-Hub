@@ -21,16 +21,17 @@ export const fetchPostError = (err) => {
 };
 
 export const initPosts = () => {
-    fetchPostListStart();
+    
     return (dispatch) => {
+        dispatch(fetchPostListStart())
         axios.get("http://127.0.0.1:8000/api/v1/posts/").then((response) => {
             dispatch(allPostList(response.data.results));
-        });
-        /**
+        })
+       
             .catch((error) => {
-                console.log("error", error);
-                dispatch(fetchFoodsError("Network Error"));
+               // console.log("error", error);
+                dispatch(fetchPostError(error.message));
             });
-            **/
+           
     };
 };

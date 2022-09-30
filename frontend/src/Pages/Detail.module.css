@@ -1,0 +1,22 @@
+.profileDetail{
+    display: flex;
+}
+
+.profileImage img {
+    z-index: 1;
+    width: 75px;
+    height: 70px;
+    /*position: relative;
+    margin-top: -65px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;*/
+    border-radius: 50%;
+    border: 5px solid #fff;
+    transition-duration: 0.4s;
+    transition-property: transform;
+}
+
+.profileImage img:hover {
+    transform: scale(1.1);
+}

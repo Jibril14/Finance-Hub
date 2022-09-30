@@ -19,7 +19,7 @@ const DIV = styled("div")(({ theme }) => ({
 function BlankPage() {
     return (
         <DIV>
-            <h2> A Blank page</h2>
+            <h2> Featured Page</h2>
             <CardUi />
         </DIV>
     );

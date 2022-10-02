@@ -18,7 +18,7 @@ const GridLayout = (props) => (
         justifyContent="center"
         style={props.style}
     >
-        <Typography>{props.children}</Typography>
+        <div>{props.children}</div>
     </Grid>
 );
 export default GridLayout;

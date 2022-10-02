@@ -7,18 +7,18 @@ import {
 } from "@mui/material";
 import Button from "../Button/Button";
 
-const CardUi = () => {
+const CardUi = (props) => {
     return (
         <Card sx={{ maxWidth: "320px" }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="160"
-                    image="../../../../Assets/sample.png"
+                    image={props.image}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="div">
-                        Topic
+                        {props.category}
                     </Typography>
 
                     <Typography
@@ -26,8 +26,8 @@ const CardUi = () => {
                         variant="body2"
                         color="text.secondary"
                     >
-                        Lorem ipsum dolor sit amet, consectetur topi adipisicing
-                        elit. In recusandae sit eligendi vitae corporis nemo,
+                         {props.title}
+                       
                     </Typography>
                 </CardContent>
             </CardActionArea>

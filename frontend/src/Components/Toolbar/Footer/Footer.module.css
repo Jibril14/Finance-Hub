@@ -1,0 +1,16 @@
+.FooterSection {
+    width: 100%;
+    padding: 20px 5px;
+    background-color: rgb(77, 52, 52);
+    color: #fff;
+    text-align: center;
+}
+
+.FooterLink {
+    color: #fff
+}
+
+
+.FooterLink:hover {
+    color: hotpink;
+}

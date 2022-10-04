@@ -21,19 +21,19 @@ export const fetchPostError = (err) => {
 };
 
 export const fetchPostsCategory = (queryCategory) => {
-    
+
     return (dispatch) => {
         dispatch(fetchPostCategoryStart())
         axios
-            .get(`http://127.0.0.1:8000/api/v1/posts/${queryCategory}`)
+            .get(`/api/v1/posts/${queryCategory}`)
             .then((response) => {
                 dispatch(postsByCategory(response.data.results));
             })
-       
+
             .catch((error) => {
                 //console.log("error", error);
                 dispatch(fetchPostError(error.message));
             });
-           
+
     };
 };

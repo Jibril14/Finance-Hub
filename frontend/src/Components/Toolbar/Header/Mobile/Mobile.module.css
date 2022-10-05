@@ -18,11 +18,24 @@
     justify-content: space-between;
     align-items: center;
 }
-.BtnContainer{
+
+
+.IconBtnSearch{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 5px;
+   
 }
+
+.IconContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto 5px;
+  
+}
+
 
 @media screen and (min-width: 781px) {
     .Mobile{

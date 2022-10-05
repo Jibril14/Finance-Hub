@@ -17,7 +17,7 @@ const SideDrawer = ({ open, onClose, Change, children }) => {
                 onClick={Change}
             >
                 <Tab component={Link} to="/" label="Home" />
-                <Tab component={Link} to="/order" label="Business" />
+                <Tab component={Link} to="/category/tech" label="Tech" />
             </Tabs>
             {/*
             <List>

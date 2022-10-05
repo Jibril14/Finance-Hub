@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux"
 import classes from "./Desktop.module.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,11 +8,25 @@ import Button from "../../../Ui/Button/Button";
 import { SearchBar } from "../../../Ui/SearchBar/SearchBar";
 import Rectangle from "../Rectangle/Rectangle";
 import { Tab, Tabs } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material";
+import UserLoginIcon from "@mui/icons-material/AccountCircleOutlined"
+import { logOut } from "../../../../store/actions/users";
+
 
 export default function Desktop() {
     const date = new Date();
     const [value, setValue] = useState(0);
+
+    const dispatch = useDispatch()
+    const { login, loginSuccess } = useSelector((state) => state.auth)
+
+    const logOutHandler = () => {
+        dispatch(logOut())
+    }
+    useEffect(() => {
+
+    }, [login, loginSuccess])
 
     return (
         <div className={classes.Desk}>
@@ -27,14 +42,27 @@ export default function Desktop() {
                 </div>
                 <Rectangle bcolor="red" width="400px" height="40px"></Rectangle>
                 <div>
-                    <Link to="/register">
-                        <Button variant="contained" style={{ color: "#fff" }}>
-                            Sign Up
-                        </Button>
-                    </Link>
-                    <Link to="/login">
-                        <Button variant="contained">Log In</Button>
-                    </Link>
+                    {login ?
+                        <div className={classes.IconContainer}>
+                            <Avatar style={{ backgroundColor: "#007FFF", color: "#fff" }}>
+                                <UserLoginIcon />
+                            </Avatar>
+                            <Button variant="contained" click={logOutHandler}>Log out</Button>
+                        </div>
+                        :
+                        <div>
+                            <Link to="/register">
+                                <Button variant="contained" style={{ color: "#fff" }}>
+                                    Sign Up
+                                </Button>
+                            </Link>
+                            <Link to="/login">
+                                <Button variant="contained">Log In</Button>
+                            </Link>
+                        </div>
+                    }
+
+
                 </div>
             </div>
             <Box sx={{ flexGrow: 1, height: "100px" }}>
@@ -56,24 +84,24 @@ export default function Desktop() {
                                 <Tab component={Link} to="/" label="Home" />
                                 <Tab
                                     component={Link}
-                                    to="/order"
+                                    to="/category/business"
                                     label="Business"
                                 />
                                 <Tab
                                     component={Link}
-                                    to="/default"
+                                    to="/category/finance"
                                     label="Finance"
                                 />
-                                <Tab component={Link} to="/" label="Tech" />
-                                <Tab component={Link} to="/" label="Market" />
-                                <Tab component={Link} to="/" label="Sport" />
-                                <Tab component={Link} to="/" label="Music" />
+                                <Tab component={Link} to="/category/tech" label="Tech" />
+                                <Tab component={Link} to="/category/market" label="Market" />
+                                <Tab component={Link} to="/category/sport" label="Sport" />
+                                <Tab component={Link} to="/category/music" label="Music" />
                                 <Tab
                                     component={Link}
-                                    to="/"
+                                    to="/category/economic"
                                     label="Economics"
                                 />
-                                <Tab component={Link} to="/" label="News" />
+                                <Tab component={Link} to="/category/news" label="News" />
                             </Tabs>
                         </div>
 
@@ -83,6 +111,6 @@ export default function Desktop() {
                     </Toolbar>
                 </AppBar>
             </Box>
-        </div>
+        </div >
     );
 }

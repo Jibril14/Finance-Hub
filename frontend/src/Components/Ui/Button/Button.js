@@ -19,6 +19,7 @@ let Button = (props) => {
             variant={props.variant}
             fullWidth={props.fullWidth}
             type={props.type}
+            onClick={props.click}
             sx={{ ml: "8px", textTransform: "none" }}
             style={props.style}
         >

@@ -1,19 +1,36 @@
-import classes from "./Mobile.module.css";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { SearchBar } from "../../../Ui/SearchBar/SearchBar";
 import ToggleBtn from "../../../Ui/ToggleBtn/ToggleBtn";
 import Button from "../../../Ui/Button/Button";
-import React, { useState } from "react";
 import SideDrawer from "../SideDrawer/SideDrawer";
 import Search from "@mui/icons-material/Search";
+import { Avatar } from "@mui/material";
+import UserLoginIcon from "@mui/icons-material/AccountCircleOutlined"
+import { logOut } from "../../../../store/actions/users";
+import classes from "./Mobile.module.css";
+
 
 function Mobile() {
+
     const [openDrawer, setOpenDrawer] = useState(false);
     const [openSearchBar, setOpenSearchBar] = useState(false);
     const ToggleSideDrawer = () => {
         setOpenDrawer(!openDrawer);
     };
+
+    const dispatch = useDispatch()
+    const { login, loginSuccess } = useSelector((state) => state.auth)
+
+    const logOutHandler = () => {
+        dispatch(logOut())
+    }
+    useEffect(() => {
+
+    }, [login, loginSuccess])
+
 
     return (
         <div className={classes.Mobile}>
@@ -25,19 +42,39 @@ function Mobile() {
                         </Typography>
                     </Link>
                     <div className={classes.Container}>
-                        <div className={classes.BtnContainer}>
+                        <div className={classes.IconBtnSearch}>
                             {/* <Button variant="contained" size="small">
                                <h5 style={{ margin: "0" }}> Sign Up</h5>  </Button>*/}
-                            <Link to="/login">
-                                <Button variant="contained" size="small">
-                                    <Typography
-                                        variant="h8"
-                                        sx={{ margin: "0" }}
-                                    >
-                                        Log In
-                                    </Typography>
-                                </Button>
-                            </Link>
+                            {login ?
+                                <div className={classes.IconContainer}>
+                                    <Avatar style={{ backgroundColor: "#007FFF", color: "#fff" }}>
+                                        <UserLoginIcon />
+                                    </Avatar>
+
+                                    <Button variant="contained" size="small" click={logOutHandler} >
+                                        <Typography
+                                            variant="h8"
+                                            sx={{ margin: "0" }}
+                                        >
+                                            Log out
+                                        </Typography>
+                                    </Button>
+
+                                </div>
+                                :
+                                <Link to="/login">
+                                    <Button variant="contained" size="small">
+                                        <Typography
+                                            variant="h8"
+                                            sx={{ margin: "0" }}
+                                        >
+                                            Log In
+                                        </Typography>
+                                    </Button>
+                                </Link>
+
+                            }
+
                             <Search
                                 onClick={() => setOpenSearchBar(!openSearchBar)}
                             />

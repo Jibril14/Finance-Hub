@@ -4,12 +4,13 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
     posts: [],
     loading: false,
-    error: false
+    error: ""
 };
 
 
 const reducer = (state = initialState, action) => {
-    switch (action.type) {
+    switch (action.type)
+    {
         case actionTypes.FETCH_ALL_POSTS_START:
             return {
                 ...state,

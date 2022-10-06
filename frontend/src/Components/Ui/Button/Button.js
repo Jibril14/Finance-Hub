@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles({
     btn: {
         // textTransform: "none",
-        backgroundColor: "red"
+        backgroundColor: "primary"
     }
 });
 
@@ -20,6 +20,7 @@ let Button = (props) => {
             fullWidth={props.fullWidth}
             type={props.type}
             onClick={props.click}
+            disabled={props.disabled}
             sx={{ ml: "8px", textTransform: "none" }}
             style={props.style}
         >

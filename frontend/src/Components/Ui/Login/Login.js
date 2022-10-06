@@ -34,11 +34,8 @@ const Login = () => {
         {
             navigate("/")
         }
-        if (error)
-        {
-            alert(error)
-        }
-    }, [loginSuccess, error, navigate])
+
+    }, [loginSuccess, navigate])
 
     return (
         <GridLayout style={{ background: "white" }}>

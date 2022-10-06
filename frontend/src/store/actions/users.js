@@ -10,7 +10,6 @@ export const createUserStart = () => {
     }
 }
 
-
 export const createUserSuccess = (userData) => {
     return {
         type: actionType.CREATE_USER_SUCCESS,
@@ -25,7 +24,6 @@ export const createUserFail = (error) => {
     }
 }
 
-
 export const registerUser = (userData) => {
     return (dispatch) => {
         dispatch(createUserStart())
@@ -38,8 +36,18 @@ export const registerUser = (userData) => {
                 console.log("data Successful")
             })
             .catch((error) => {
-                dispatch(createUserFail(error.message))
-                //console.log("ErrorMessage", error.message)
+                console.log("ErrorMessage",  error.response.data)
+                let message = ""
+                for (let x in error.response.data)
+                {
+                    message += error.response.data[x][0]
+                }
+                if (error.response.data.length >= 50) // This is a 500 server error( would not be rearch)
+                {                         // User is actually created. The wab page is return as a string
+                    message = ""
+                }
+                dispatch(createUserFail(message))
+
             })
     }
 }
@@ -66,7 +74,7 @@ export const loginFail = (err) => {
 }
 
 export const loginUser = (loginPass) => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(loginStart())
         axios.post("/api/v1/auth/jwt/create/", loginPass)
             .then((response) => {

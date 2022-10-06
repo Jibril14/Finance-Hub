@@ -14,7 +14,7 @@ const SidebarData = (props) => {
     const categoryPost = useSelector((state) => {
         return state.postsCategory.posts;
     });
-    console.log("CatPost", categoryPost); //logging the data from store
+    //console.log("CatPost", categoryPost); //logging the data from store
     const query = props.query;
     useEffect(() => {
         dispatch(fetchPostsCategory(query));

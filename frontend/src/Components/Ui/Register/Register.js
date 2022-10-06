@@ -1,16 +1,17 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { registerUser } from "../../../store/actions/users";
 import { Avatar, Paper, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import GridLayout from "../../Ui/GridLayout/GridLayout";
 import Button from "../Button/Button";
 import PersonSharpIcon from "@mui/icons-material/Person2Sharp";
-
+import Spinner2 from "../Spinner2/Spinner2";
 
 const Login = () => {
 
     const dispatch = useDispatch()
+    const { loading, registerSuccess, registerError } = useSelector((state) => state.auth)
 
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
@@ -31,6 +32,11 @@ const Login = () => {
         dispatch(registerUser(formdata))
     }
 
+    let disable = false
+    if ((password1 !== password2) || (password1.length <= 7))
+    {
+        disable = true
+    }
 
     return (
         <GridLayout style={{ background: "white" }}>
@@ -40,7 +46,7 @@ const Login = () => {
                     height: "auto",
                     maxWidth: "330px",
                     margin: "20px auto",
-                    padding: "20px 7px"
+                    padding: "20px 12px"
                 }}
             >
                 <div
@@ -99,7 +105,7 @@ const Login = () => {
                         label="password"
                         value={password1}
                         type="password"
-                        placeholder="Enter Password"
+                        placeholder="More than 7 Alphanumeric "
                         fullWidth
                         required
                         variant="filled"
@@ -120,6 +126,7 @@ const Login = () => {
                         variant="contained"
                         fullWidth
                         style={{ margin: "20px 0" }}
+                        disabled={disable}
                     >
                         Register
                     </Button>
@@ -128,6 +135,16 @@ const Login = () => {
                     Already have an account? <Link to="/login">Login here</Link>
                 </Typography>
             </Paper>
+
+            {loading && <Spinner2 />}
+            {registerSuccess &&
+                <p style={{ color: "green" }}>Your Account has been created. Pls check your email and activate your account</p>
+            }
+            {registerError &&
+                <>
+                    <p style={{ color: "red" }}>{registerError}</p>
+                </>
+            }
         </GridLayout>
     );
 };

@@ -20,14 +20,7 @@ function App() {
             <Layout>
                 <Routes>
                     <Route path="*" element={<Home />} />
-                    <Route path="/category/:id" element={
-                        <Category
-                            location={location}
-                        />
-
-
-                    }
-                    />
+                    <Route path="/category/:id" element={<Category />} />
                     <Route path="/hn/:id" element={<Featured />} />
                     <Route path="/detail" element={<Detail />} />
                     <Route path="/register" element={<Register />} />

@@ -7,8 +7,10 @@ console.log("User", user)
 const initialState = {
     login: user ? user : null,
     loginSuccess: false,
+    loginError: "",
     loading: false,
-    error: ""
+    registerSuccess: false,
+    registerError: ""
 }
 
 
@@ -25,6 +27,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
+                registerSuccess: true,
+                registerError: null
 
             }
 
@@ -32,7 +36,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: action.payload
+                registerSuccess: false,
+                registerError: action.payload
             }
 
         case actionType.LOGIN_USER_START:
@@ -45,7 +50,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: null,
+                loginError: null,
                 loginSuccess: true,
                 login: action.payload
 

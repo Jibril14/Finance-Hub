@@ -16,4 +16,5 @@ export const LOGIN_USER_START = "LOGIN_USER_START";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
 
-export const LOGOUT = "LOGOUT "
+export const LOGOUT = "LOGOUT"
+export const ACTIVATE_USER = "ACTIVATE_USER"

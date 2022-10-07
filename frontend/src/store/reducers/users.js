@@ -10,7 +10,8 @@ const initialState = {
     loginError: "",
     loading: false,
     registerSuccess: false,
-    registerError: ""
+    registerError: "",
+    userActivation: false
 }
 
 
@@ -70,6 +71,13 @@ const reducer = (state = initialState, action) => {
                 login: null,
                 loginSuccess: false
             }
+
+        case actionType.ACTIVATE_USER:
+            return {
+                ...state,
+                userActivation: true
+            }
+
         default:
             return state;
     }

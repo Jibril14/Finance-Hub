@@ -9,7 +9,7 @@ import { Routes, Route, useLocation, useParams } from "react-router-dom";
 import Detail from "./Pages/Detail";
 import Category from "./Pages/Category";
 import Featured from "./Pages/Featured";
-
+import Activation from "./Pages/Activation";
 
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
                     <Route path="/detail" element={<Detail />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/activate/:uid/:token" element={<Activation />} />
                 </Routes>
             </Layout>
         </div>

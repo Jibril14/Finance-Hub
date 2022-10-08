@@ -30,7 +30,7 @@ function Home() {
     let myPosts = (
         posts.map((post) => (
             <GridLayout style={{ background: "#fff" }} key={post.slug}>
-                <CardUi image={post.photo1} category={post.category} title={post.title} />
+                <CardUi url={`/post/${post.slug}`} image={post.photo1} category={post.category} title={post.title} />
             </GridLayout>
         ))
     )

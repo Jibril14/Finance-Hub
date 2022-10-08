@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 //import {useQueryParam,  useNavigate } from "react-router-dom";
 
 import { fetchPostsCategory } from "../../../store/actions/postsCategory";
@@ -23,17 +24,19 @@ const SidebarData = (props) => {
     return (
         <>
             {categoryPost.map((post) => (
-                <div key={post.slug} className={classes.Container}>
-                    <div className={classes.ImageContainer}>
-                        <img src={post.photo2} alt="financehub" />
+                <Link to={`/post/${post.slug}`} key={post.slug}>
+                    <div className={classes.Container}>
+                        <div className={classes.ImageContainer}>
+                            <img src={post.photo2} alt="financehub" />
+                        </div>
+                        <div className={classes.Content}>
+                            <h5 className={classes.Category}>{post.category}</h5>
+                            <h5 className={classes.Text}>{post.title}</h5>
+                        </div>
                     </div>
-                    <div className={classes.Content}>
-                        <h5 className={classes.Category}>{post.category}</h5>
-                        <h5 className={classes.Text}>{post.title}</h5>
-                    </div>
-                </div>
+                </Link>
             ))}
         </>
-    );
+    )
 };
 export default SidebarData;

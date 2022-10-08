@@ -35,3 +35,43 @@ export const initPosts = () => {
 
     };
 };
+
+
+
+
+export const fetchPostDetailStart = () => {
+    return {
+        type: actionTypes.FETCH_DETAIL_POST_START
+    };
+};
+
+export const fetchPostDetailSuccess = (post) => {
+    return {
+        type: actionTypes.FETCH_DETAIL_POST_SUCCESS,
+        payload: post
+    };
+};
+
+export const fetchPostDetailFail = (error) => {
+    return {
+        type: actionTypes.FETCH_DETAIL_POST_FAIL,
+        payload: error
+    };
+};
+
+
+export const postDetail = (id) => {
+
+    return (dispatch) => {
+        dispatch(fetchPostDetailStart())
+        axios.get(`/api/v1/post/${id}`).then((response) => {
+            dispatch(fetchPostDetailSuccess(response.data));
+            console.log("uDetailPostFrom Store", response.data)
+        })
+            .catch((error) => {
+                dispatch(fetchPostDetailFail(error.message));
+            });
+
+    };
+};
+

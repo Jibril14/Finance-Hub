@@ -111,7 +111,6 @@ export const activateUser = (userData) => {
             })
             .catch((error) => {
                 alert(error.toString())
-                console.log("ActivationNownow", error)
             })
     })
 }

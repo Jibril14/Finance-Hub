@@ -66,7 +66,6 @@ export const postDetail = (id) => {
         dispatch(fetchPostDetailStart())
         axios.get(`/api/v1/post/${id}`).then((response) => {
             dispatch(fetchPostDetailSuccess(response.data));
-            console.log("uDetailPostFrom Store", response.data)
         })
             .catch((error) => {
                 dispatch(fetchPostDetailFail(error.message));

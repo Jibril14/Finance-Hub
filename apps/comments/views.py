@@ -11,15 +11,15 @@ class CreateComment(generics.CreateAPIView):
 
     def get_queryset(self):
         try:
-            post = Post.objects.get(pk=self.kwargs["pk"])
+            post = Post.objects.get(slug=self.kwargs["slug"])
         except BaseException:
             raise exceptions.APIException("Post not found!")
-        return Post.objects.filter(pk=post.pk)
+        return Post.objects.filter(slug=post.slug)
 
     def perform_create(self, serializer):
         if self.get_queryset().exists():
             user = self.request.user
-            serializer.save(user_name=user, post=Post.objects.get(pk=self.kwargs["pk"]))
+            serializer.save(user_name=user, post=Post.objects.get(slug=self.kwargs["slug"]))
 
 
 class UpdateCommentView(generics.UpdateAPIView):

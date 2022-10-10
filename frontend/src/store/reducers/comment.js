@@ -5,10 +5,9 @@ import * as ActionType from "../actions/actionTypes"
 const initialState = {
     comment: "",
     loadingComment: false,
-    error: null
+    errorComment: null
 
 }
-
 
 
 const reducer = (state = initialState, action) => {
@@ -24,14 +23,15 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                comment: action.payload
+                comment: action.payload,
+                errorComment: null
             }
 
         case ActionType.CREATE_COMMENT_FAIL:
             return {
                 ...state,
                 loading: false,
-                error: action.error
+                errorComment: action.error
             }
 
         default:

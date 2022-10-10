@@ -18,7 +18,7 @@ export const createCommentSuccess = (comment) => {
 export const createCommentFail = (error) => {
     return {
         type: actionType.CREATE_COMMENT_FAIL,
-        payload: error
+        error: error
     }
 }
 
@@ -44,8 +44,7 @@ export const createComment = (slug, userComment) => {
                 dispatch(createCommentSuccess(response.data))
             })
             .catch((error) => {
-                dispatch(createCommentFail(error.message))
-                console.log("Error", error.response.data)
+                dispatch(createCommentFail("You need to login to comment!"))
             })
     })
 }

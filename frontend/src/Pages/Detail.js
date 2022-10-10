@@ -13,11 +13,11 @@ function Detail() {
 
     const dispatch = useDispatch()
     const { loading, error, detailPost } = useSelector((state) => state.posts)
-    const { loadingComment, comment } = useSelector((state) => state.comment)
+    const { loadingComment, comment, errorComment } = useSelector((state) => state.comment)
 
     useEffect(() => {
         dispatch(postDetail(id))
-    }, [id, dispatch, comment])
+    }, [id, dispatch, comment, errorComment])
 
     const AddComment = (comment) => {
         dispatch(createComment(id, comment))
@@ -69,7 +69,8 @@ function Detail() {
             </div>
             {loading && <Spinner />}
             {loadingComment && <Spinner />}
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {errorComment && <p style={{ color: "red" }}>{errorComment}</p>}
+            {error && <h4 style={{ color: "red" }}>{error}</h4>}
         </div>
     );
 }

@@ -7,10 +7,14 @@ import GridLayout from "../Components/Ui/GridLayout/GridLayout";
 import SideBar from "../Components/Ui/SideBar/Sidebar";
 import Spinner from "../Components/Ui/Spinner/Spinner";
 import Error from "../Components/Ui/Error/Error";
+import { useLocation } from "react-router-dom";
 
 function Home() {
+
+    const location = useLocation()
     const dispatch = useDispatch();
-    const onInitPost = useCallback(() => dispatch(initPosts()), [dispatch]);
+    const onInitPost = useCallback(() => dispatch(initPosts(location.search)),
+        [dispatch, location.search]);
 
     const allPost = useSelector((state) => {
         return state.posts;
@@ -18,12 +22,10 @@ function Home() {
 
     const { posts, loading, error } = allPost
 
-    //console.log("ALLPost", allPost.posts); logging the data from store
 
     useEffect(() => {
         onInitPost();
-
-    }, [onInitPost]);
+    }, [onInitPost, location.search]);
 
 
 
@@ -42,6 +44,7 @@ function Home() {
     const showErr = error ? true : false
     return (
         <>
+            {location.search && <h3>Search Results</h3>}
             <Grid container column={12} >
                 <Grid container xs={12} sm={12} md={9} lg={9} xl={10} rowSpacing="0" columnSpacing="7">
                     {myPosts}

@@ -20,23 +20,18 @@ export const fetchPostError = (err) => {
     };
 };
 
-export const initPosts = () => {
-
+export const initPosts = (searchParam) => {
     return (dispatch) => {
         dispatch(fetchPostListStart())
-        axios.get("/api/v1/posts/").then((response) => {
+        axios.get(`/api/v1/posts/${searchParam}`).then((response) => {
             dispatch(allPostList(response.data.results));
         })
-
             .catch((error) => {
                 // console.log("error", error);
                 dispatch(fetchPostError(error.message));
             });
-
     };
 };
-
-
 
 
 export const fetchPostDetailStart = () => {
@@ -58,7 +53,6 @@ export const fetchPostDetailFail = (error) => {
         payload: error
     };
 };
-
 
 export const postDetail = (id) => {
 

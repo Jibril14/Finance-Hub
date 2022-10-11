@@ -17,14 +17,17 @@ from django_filters.rest_framework import DjangoFilterBackend
 class PostFilter(django_filters.FilterSet):
     post_category = django_filters.CharFilter(
         field_name = "category__category_name", lookup_expr="iexact"
-    ) 
+    )
+    keyword = django_filters.CharFilter(
+        field_name = "title", lookup_expr="icontains"
+    )  
     popular_posts = django_filters.NumberFilter(field_name="views", lookup_expr="gt")
     recent_posts = django_filters.NumberFilter(field_name="views", lookup_expr="lt") 
   
    
     class Meta:
         model = Post
-        fields = ["category", "views"]
+        fields = ["category", "views", "title"]
 
 
 class PostListView(generics.ListAPIView):
@@ -38,7 +41,7 @@ class PostListView(generics.ListAPIView):
         filters.OrderingFilter,
     ]
     filterset_class = PostFilter
-    search_fields = ["category", "views"]
+    search_fields = ["category", "views", "title"]
     ordering_fields = ["date_created"]
 
 

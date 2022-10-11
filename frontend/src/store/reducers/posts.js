@@ -21,7 +21,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: action.posts, //Post object from server
-                loading: false
+                loading: false,
+                error: null
             };
 
         case actionTypes.FETCH_ALL_POST_FAIL:

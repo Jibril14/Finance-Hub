@@ -24,7 +24,7 @@ export const initPosts = (searchParam) => {
     return (dispatch) => {
         dispatch(fetchPostListStart())
         axios.get(`/api/v1/posts/${searchParam}`).then((response) => {
-            dispatch(allPostList(response.data.results));
+            dispatch(allPostList(response.data));
         })
             .catch((error) => {
                 // console.log("error", error);

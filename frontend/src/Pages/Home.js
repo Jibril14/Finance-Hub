@@ -1,5 +1,6 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { initPosts } from "../store/actions/posts";
 import CardUi from "../Components/Ui/CardUi/CardUi";
 import { Grid } from "@mui/material";
@@ -7,10 +8,12 @@ import GridLayout from "../Components/Ui/GridLayout/GridLayout";
 import SideBar from "../Components/Ui/SideBar/Sidebar";
 import Spinner from "../Components/Ui/Spinner/Spinner";
 import Error from "../Components/Ui/Error/Error";
-import { useLocation } from "react-router-dom";
+import Paginate from "../Components/Ui/Pagination/Pagination";
+
 
 function Home() {
 
+    const navigate = useNavigate()
     const location = useLocation()
     const dispatch = useDispatch();
     const onInitPost = useCallback(() => dispatch(initPosts(location.search)),
@@ -20,13 +23,23 @@ function Home() {
         return state.posts;
     });
 
-    const { posts, loading, error } = allPost
+    const { posts, loading, error, count, next, previous } = allPost
+    const Per_Page = 2
 
+
+    const handlePageClick = (e, val) => {
+        navigate(`/?page=${val}`)
+    }
+
+    let Count
+    if (next)
+    {
+        Count = Math.ceil(count / Per_Page)
+    }
 
     useEffect(() => {
         onInitPost();
     }, [onInitPost, location.search]);
-
 
 
     let myPosts = (
@@ -63,8 +76,8 @@ function Home() {
                     <SideBar />
 
                 </Grid>
-
             </Grid>
+            <Paginate count={Count} change={handlePageClick} />
         </>
     );
 }

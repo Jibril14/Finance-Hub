@@ -3,10 +3,14 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     posts: [],
+    count: null,
+    next: null,
+    previous: null,
     detailPost: {},
     loading: false,
     error: ""
 };
+
 
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +24,11 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ALL_POSTS_SUCCESS:
             return {
                 ...state,
-                posts: action.posts, //Post object from server
+                posts: action.posts.results, //Post Array from server
+                count: action.posts.count,
+                next: action.posts.next,
+                previous: action.posts.previous,
+
                 loading: false,
                 error: null
             };

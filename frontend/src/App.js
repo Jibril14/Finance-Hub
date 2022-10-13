@@ -20,7 +20,7 @@ function App() {
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/category/:id" element={<Category />} />
+                    <Route path="/category/:catName" element={<Category />} />
                     <Route path="/hn/:id" element={<Featured />} />
                     <Route path="/post/:id" element={<Detail />} />
                     <Route path="/register" element={<Register />} />

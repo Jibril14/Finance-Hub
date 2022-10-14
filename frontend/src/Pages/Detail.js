@@ -32,7 +32,7 @@ function Detail() {
                 </div>
                 <div>
                     <h4 style={{ margin: "4px 4px" }}>
-                        Written by {detailPost.author}
+                        by {detailPost.author}
                     </h4>
                     <h5 style={{ margin: "2px 4px" }}>Software Engineer</h5>
                 </div>
@@ -47,14 +47,12 @@ function Detail() {
 
             {detailPost.comments ? detailPost.comments.map((comment) => (
                 <div key={comment.id} className={classes.CommentBox}>
-
-
                     <div className={classes.profileImage}>
                         <img src="../../../../Assets/sample.png" />
                     </div>
                     <div>
                         <div className={classes.CommenterName}>
-                            <div><h4 style={{ margin: "0" }}>Adio Samuel</h4></div>
+                            <div><h4 style={{ margin: "0" }}>{comment.user_name}</h4></div>
                             <div style={{ marginLeft: "7px" }}>{new Date().getDay()}d</div>
                         </div>
 

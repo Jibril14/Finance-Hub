@@ -57,9 +57,9 @@ function Home() {
     const showErr = error ? true : false
     return (
         <>
-            {location.search && <h3>Search Results</h3>}
+            {location.search.match("keyword") && <h3>Search Results</h3>}
             <Grid container column={12} >
-                <Grid container xs={12} sm={12} md={9} lg={9} xl={10} rowSpacing="0" columnSpacing="7">
+                <Grid item container xs={12} sm={12} md={9} lg={9} xl={10} rowSpacing="0" columnSpacing="7">
                     {myPosts}
 
                     <Error showErr={showErr} error={error} />

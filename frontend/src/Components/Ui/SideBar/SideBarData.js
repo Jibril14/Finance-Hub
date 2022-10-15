@@ -8,14 +8,11 @@ import classes from "./Sidebar.module.css";
 
 const SidebarData = (props) => {
     const dispatch = useDispatch();
-    //const navigate = useNavigate();
-    // let query = "?post_category=others";
-    //console.log("Query", query);
 
     const categoryPost = useSelector((state) => {
-        return state.postsCategory.posts;
+        return state.postsCategory.posts.slice(0, 2)
     });
-    //console.log("CatPost", categoryPost); //logging the data from store
+
     const query = props.query;
     useEffect(() => {
         dispatch(fetchPostsCategory(query));

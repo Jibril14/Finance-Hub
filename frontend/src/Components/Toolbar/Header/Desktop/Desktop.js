@@ -8,7 +8,7 @@ import Button from "../../../Ui/Button/Button";
 import { SearchBar } from "../../../Ui/SearchBar/SearchBar";
 import Rectangle from "../Rectangle/Rectangle";
 import { Tab, Tabs } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import UserLoginIcon from "@mui/icons-material/AccountCircleOutlined"
 import { logOut } from "../../../../store/actions/users";

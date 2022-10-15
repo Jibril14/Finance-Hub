@@ -8,7 +8,7 @@ import Home from "./Pages/Home";
 import { Routes, Route, useLocation, useParams } from "react-router-dom";
 import Detail from "./Pages/Detail";
 import Category from "./Pages/Category";
-import Featured from "./Pages/Featured";
+import Common from "./Pages/Common";
 import Activation from "./Pages/Activation";
 
 
@@ -21,7 +21,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/category/:catName" element={<Category />} />
-                    <Route path="/hn/:id" element={<Featured />} />
+                    <Route path="/hn/:id" element={<Common />} />
                     <Route path="/post/:id" element={<Detail />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />

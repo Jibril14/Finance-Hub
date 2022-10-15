@@ -1,44 +1,31 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { useNavigate, useLocation } from "react-router-dom";
+import classes from "./SearchBar.module.css"
 
 const Search = styled("div")(({ theme }) => ({
-    position: "relative",
+
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
         backgroundColor: alpha(theme.palette.common.white, 0.25)
     },
     marginLeft: 0,
+    //padding: "2px",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
         marginLeft: theme.spacing(1),
         width: "auto"
     }
-    //[theme.breakpoints.down("780")]: {
-    // down below 780 use this style
-    //  display: (props) => (props.open ? "block" : "none")
-    //}
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    backgroundColor: "red",
-    alignItems: "center",
-    justifyContent: "center"
-}));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
     "& .MuiInputBase-input": {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create("width"),
         width: "100%",
@@ -53,7 +40,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const SearchBar = (props) => {
     const navigate = useNavigate()
-    const location = useLocation()
 
     const [keyword, setKeyword] = useState("")
 
@@ -67,24 +53,32 @@ export const SearchBar = (props) => {
     return (
         <Search
             style={{
-                display: props.open ? "block" : "none"
+                display: props.open ? "block" : "none",
+                border: "1px 0 solid gray",
             }}
         >
-            <div style={{ background: "cyan" }} onClick={handleSearchBar}>Btn
-                <SearchIconWrapper >
-                    <SearchIcon />
-                </SearchIconWrapper>
+
+            <div className={classes.SearchIcon}
+                onClick={handleSearchBar}>
+
+
+                <SearchIcon />
+
             </div>
-            <StyledInputBase
-                onChange={(e) => setKeyword(e.target.value)}
-                label="comment"
-                value={keyword}
-                type="search"
-                fullWidth
-                required
-                placeholder="Start Search…"
-                inputProps={{ "aria-label": "search" }}
-            />
+            <div className={classes.SearchInputBase} >
+                <StyledInputBase
+                    onChange={(e) => setKeyword(e.target.value)}
+                    label="comment"
+                    value={keyword}
+                    type="search"
+                    fullWidth
+                    required
+                    placeholder="Start Search…"
+                    inputProps={{ "aria-label": "search" }}
+                />
+
+            </div>
+
         </Search>
     );
 };

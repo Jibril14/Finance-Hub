@@ -7,11 +7,6 @@
     align-items: center;
    
 } 
-.MobileSearch{
-    background-color: bisque;
-    margin:70px 15px 20px 15px;
-}
-
 
 .Container{
     display: flex;
@@ -36,6 +31,11 @@
   
 }
 
+.MobileSearch{
+    background-color: rgb(224, 134, 24);
+    margin:70px 15px 70px 15px;
+    
+}
 
 @media screen and (min-width: 781px) {
     .Mobile{

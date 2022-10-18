@@ -14,6 +14,6 @@ urlpatterns = [
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = "Finance Hub"
-admin.site.site_title = "Finance Hub Admin Portal"
-admin.site.index_title = "Welcome to Finance Hub"
+admin.site.site_header = "News Hub"
+admin.site.site_title = "News Hub Admin Portal"
+admin.site.index_title = "Welcome to News Hub"

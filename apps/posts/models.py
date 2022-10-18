@@ -6,9 +6,18 @@ from django.conf import settings
 class Post(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True, db_index=True)
-    photo1 = models.ImageField(default='sample.png', null=True, blank=True)
-    photo2 = models.ImageField(default='sample.png', null=True, blank=True)
-    photo3 = models.ImageField(default='sample.png', null=True, blank=True)
+    photo1 = models.CharField(
+        max_length=400,
+        blank=True,
+        default="https://res.cloudinary.com/webmonc/image/upload/v1658887052/portfolio/book-store/default_img_hfhgpg.jpg")
+    photo2 = models.CharField(
+        max_length=400,
+        blank=True,
+        default="https://res.cloudinary.com/webmonc/image/upload/v1658887052/portfolio/book-store/default_img_hfhgpg.jpg")
+    photo3 = models.CharField(
+        max_length=400,
+        blank=True,
+        default="https://res.cloudinary.com/webmonc/image/upload/v1658887052/portfolio/book-store/default_img_hfhgpg.jpg")
     excerpt = models.CharField(max_length=150, blank=False)
     content = models.TextField()
     views = models.IntegerField(verbose_name='Total Views', default=0)

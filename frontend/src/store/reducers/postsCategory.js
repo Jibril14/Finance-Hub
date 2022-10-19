@@ -22,6 +22,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 posts: action.posts.results, //from the object recieve as payload, pull out results(an array)
                 loading: false,
+                error: null,
                 count: action.posts.count,
                 next: action.posts.next,
                 previous: action.posts.previous,

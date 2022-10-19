@@ -1,6 +1,5 @@
 import * as actionType from "../actions/actionTypes"
 
-
 const user = JSON.parse(localStorage.getItem("userPass"))
 console.log("User", user)
 
@@ -61,7 +60,7 @@ const reducer = (state = initialState, action) => {
         case actionType.LOGIN_USER_FAIL:
             return {
                 ...state,
-                error: action.error,
+                loginError: action.error,
                 loading: false,
             }
 
@@ -69,7 +68,9 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 login: null,
-                loginSuccess: false
+                loginSuccess: false,
+                
+                
             }
 
         case actionType.ACTIVATE_USER:

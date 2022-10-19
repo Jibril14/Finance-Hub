@@ -36,7 +36,7 @@ const Footer = () => (
                 <Link className={classes.FooterLink} to="/hn/terms">Terms</Link>
             </GridLayout>
         </Grid>
-        <div className={classes.FooterSection}> &copy; Copyright Finance Hub. All Rights Reserved. {new Date().getFullYear()}</div>
+        <div className={classes.FooterSection}> &copy; Copyright News Hub. All Rights Reserved. {new Date().getFullYear()}</div>
     </Box>
 );
 

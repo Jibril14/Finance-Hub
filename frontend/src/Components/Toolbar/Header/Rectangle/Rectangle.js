@@ -16,7 +16,7 @@ const Rectangle = ({ children, bcolor, width, height, padding }) => (
 );
 
 Rectangle.propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.array,
     bcolor: PropTypes.string,
     width: PropTypes.string,
     height: PropTypes.string,

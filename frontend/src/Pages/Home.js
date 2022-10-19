@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { initPosts } from "../store/actions/posts";
@@ -9,7 +9,7 @@ import SideBar from "../Components/Ui/SideBar/Sidebar";
 import Spinner from "../Components/Ui/Spinner/Spinner";
 import Error from "../Components/Ui/Error/Error";
 import Paginate from "../Components/Ui/Pagination/Pagination";
-
+import classes from "./Detail.module.css";
 
 function Home() {
 
@@ -23,8 +23,8 @@ function Home() {
         return state.posts;
     });
 
-    const { posts, loading, error, count, next, previous } = allPost
-    const Per_Page = 2
+    const { posts, loading, error, count, next } = allPost
+    const Per_Page = 8
 
 
     const handlePageClick = (e, val) => {
@@ -57,27 +57,30 @@ function Home() {
     const showErr = error ? true : false
     return (
         <>
-            {location.search.match("keyword") && <h3>Search Results</h3>}
-            <Grid container column={12} >
-                <Grid item container xs={12} sm={12} md={9} lg={9} xl={10} rowSpacing="0" columnSpacing="7">
+            {location.search.match("keyword") && <h3 style={{ margin: "70px 0" }}>Search Results</h3>}
+            <Grid container column={12} rowSpacing={4} columnSpacing={3} >
+                <Grid item container xs={12} sm={12} md={9} lg={9} xl={10} rowSpacing={8} columnSpacing={2}>
                     {myPosts}
-
                     <Error showErr={showErr} error={error} />
                 </Grid>
+                <div className={classes.MobilePagination}>
+                    <Paginate count={Count} change={handlePageClick} />
+                </div>
                 <Grid item
                     xs={12}
                     sm={12}
                     md={3}
-                    lg={2.9} // 1.9+1 act like =2 but lg must nott b 2
+                    lg={2.9}
                     xl={2}
-                    sx={{ background: "cyan" }}
-
+                    sx={{ background: "#fff" }}
                 >
                     <SideBar />
 
                 </Grid>
             </Grid>
-            <Paginate count={Count} change={handlePageClick} />
+            <div className={classes.DesktopPagination}>
+                <Paginate count={Count} change={handlePageClick} />
+            </div>
         </>
     );
 }

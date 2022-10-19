@@ -33,11 +33,11 @@ function Category(props) {
     state.postsCategory
   )
 
-  const { posts, loading, error, count, next } = postCategory
+  const { posts, loading, error, count } = postCategory
 
 
   // For pagination
-  let Per_Page = 2   // Tally with backend Pagination
+  let Per_Page = 8   // Tally with backend Pagination
   let Count
   if (count)  
   {
@@ -66,10 +66,8 @@ function Category(props) {
 
   return <>
     <div className={classes.CatContainer}>
-
-      <h2>{catname}</h2>
+      <h2 className={classes.CatName}>{catname.toUpperCase()}</h2>
       <Grid container rowSpacing={4} columnSpacing={3}>
-
         {categoryPosts}
         <Error showErr={showErr} error={error} />
       </Grid>

@@ -38,20 +38,17 @@ function Mobile() {
                 <Toolbar className={classes.Toolbar}>
                     <Link to="/">
                         <Typography variant="h6" color="#fff">
-                            Finance Hub
+                            News Hub
                         </Typography>
                     </Link>
                     <div className={classes.Container}>
                         <div className={classes.IconBtnSearch}>
-                            {/* <Button variant="contained" size="small">
-                               <h5 style={{ margin: "0" }}> Sign Up</h5>  </Button>*/}
                             {login ?
                                 <div className={classes.IconContainer}>
                                     <Avatar style={{ backgroundColor: "#007FFF", color: "#fff" }}>
                                         <UserLoginIcon />
                                     </Avatar>
-
-                                    <Button variant="contained" size="small" click={logOutHandler} >
+                                    <Button variant="contained" size="small" style={{ marginRight: "5px" }} click={logOutHandler} >
                                         <Typography
                                             variant="h8"
                                             sx={{ margin: "0" }}
@@ -88,10 +85,11 @@ function Mobile() {
                         <ToggleBtn clicked={ToggleSideDrawer} />
                     </div>
                 </Toolbar>
+                <div className={classes.MobileSearch}>
+                    <SearchBar open={openSearchBar} />
+                </div>
             </AppBar>
-            <div className={classes.MobileSearch}>
-                <SearchBar open={openSearchBar} />
-            </div>
+
         </div>
     );
 }

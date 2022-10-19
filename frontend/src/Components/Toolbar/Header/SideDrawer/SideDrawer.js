@@ -16,19 +16,39 @@ const SideDrawer = ({ open, onClose, Change, children }) => {
                 orientation="vertical"
                 onClick={Change}
             >
-                <Tab component={Link} to="/" label="Home" />
-                <Tab component={Link} to="/category/tech" label="Tech" />
+                <Tab
+                    component={Link}
+                    to="/"
+                    label="Home"
+                />
+                <Tab
+                    component={Link}
+                    to="/category/world"
+                    label="World"
+                />
+                <Tab
+                    component={Link}
+                    to="/category/business"
+                    label="Business"
+                />
+                <Tab component={Link}
+                    to="/category/sport"
+                    label="Sport"
+                />
+                <Tab
+                    component={Link}
+                    to="/category/finance"
+                    label="Finance"
+                />
+                <Tab
+                    component={Link}
+                    to="/category/tech"
+                    label="Tech"
+                />
+                <Tab component={Link}
+                    to="/category/travel"
+                    label="Travel" />
             </Tabs>
-            {/*
-            <List>
-                <ListItemButton>
-                    <ListItemIcon>
-                        <ListItemText>{children}</ListItemText>
-                    </ListItemIcon>
-                </ListItemButton>
-            </List>
-
-    */}
         </Drawer>
     );
 };

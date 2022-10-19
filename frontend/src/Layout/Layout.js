@@ -3,7 +3,6 @@ import Desktop from "../Components/Toolbar/Header/Desktop/Desktop";
 import Mobile from "../Components/Toolbar/Header/Mobile/Mobile";
 import SideDrawer from "../Components/Toolbar/Header/SideDrawer/SideDrawer";
 import Footer from "../Components/Toolbar/Footer/Footer";
-//import GridLayout from "../Components/Ui/GridLayout/GridLayout";
 
 
 function Layout(props) {
@@ -15,10 +14,9 @@ function Layout(props) {
                 <Mobile />
                 <SideDrawer />
             </div>
-            <div className="MainSection">
+            <div className={classes.MainSection}>
                 <main className={classes.main}>{props.children}</main>
             </div>
-
             <div className="FooterSection">
                 <Footer />
             </div>

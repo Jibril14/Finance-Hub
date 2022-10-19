@@ -1,5 +1,9 @@
 .CatContainer {
     width: 100%;
-    padding: 10px;
 
+}
+
+.CatName{
+    margin: 30px 0;
+    color: aqua;
 }

@@ -1,3 +1,10 @@
+.TabsContainer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8470FF;
+}
+
 .Container{
     display:flex;
     align-items: center;
@@ -5,11 +12,10 @@
     background-color: white;
     max-width: 340px;
     height: auto;
-    padding: 0 ;
+    padding: 0;
     margin: 7px 0 2px 2px;
    overflow: hidden;
-   box-shadow: 2px 2px 5px rgb(0,0,0,0.2); 
-   
+   box-shadow: 2px 2px 5px rgb(0,0,0,0.2);  
 }
 
 .ImageContainer{
@@ -46,6 +52,10 @@ object-position: center center;
 }
 
 @media screen and ( max-width:900px) {
+    .TabsContainer{
+    margin-top: 30px;
+    }
+  
     .Container{
         max-width: 100%;
         padding: 0 5px 0 5px;

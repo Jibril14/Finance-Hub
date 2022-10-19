@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Tabs, Tab } from "@mui/material";
 import SidebarData from "./SideBarData";
-
+import classes from "./Sidebar.module.css";
+import { width } from "@mui/system";
 
 const SideBar = (props) => {
 
@@ -27,33 +28,32 @@ const SideBar = (props) => {
 
         }
 
-
-        //console.log("Categorytype", cati);
     };
 
 
-
     return (
+        <>
+            <div className={classes.TabsContainer}>
+                <Tabs
+                    textColor="inherit"
+                    value={value}
+                    onChange={CategoryHandler}
+                    indicatorColor="secondary"
+                >
+                    <Tab label="Latest" />
 
-        <div>
-            <Tabs
-                textColor="inherit"
-                value={value}
-                onChange={CategoryHandler}
-               
-                indicatorColor="secondary"
-            >
-             
+                    <Tab label="Trending" />
 
-                <Tab label="Latest" />
-             
-                <Tab label="Trending" />
+                    <Tab label="Hot" />
+                </Tabs>
+            </div>
+            <div>
+                <SidebarData query={categoryState} />
+            </div>
 
-                <Tab label="Hot" />
-            </Tabs>
 
-            <SidebarData query={categoryState} /> 
-        </div>
+        </>
+
     );
 };
 

@@ -12,7 +12,7 @@ import Spinner2 from "../Spinner2/Spinner2";
 const Login = () => {
 
     const dispatch = useDispatch()
-    const { loginSuccess, loading, error } = useSelector((state) => state.auth)
+    const { login, loginSuccess, loading, loginError } = useSelector((state) => state.auth)
     const navigate = useNavigate()
 
 
@@ -30,12 +30,12 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if (loginSuccess)
+        if (login)
         {
             navigate("/")
         }
 
-    }, [loginSuccess, navigate])
+    }, [login, navigate])
 
     return (
         <GridLayout style={{ background: "white" }}>
@@ -101,7 +101,7 @@ const Login = () => {
                     <Linck to="/register"> Register Now</Linck>
                 </Typography>
             </Paper>
-            {error && <p style={{ color: "red" }}>Please Enter a Valid Email & Password</p>}
+            {loginError && <p style={{ color: "red" }}>Please Enter a Valid Email & Password</p>}
             {loading && <Spinner2 />}
         </GridLayout>
     );

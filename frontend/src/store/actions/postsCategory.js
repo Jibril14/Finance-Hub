@@ -23,7 +23,6 @@ export const fetchPostError = (err) => {
 };
 
 export const fetchPostsCategory = (queryCategory) => {
-
     return (dispatch) => {
         dispatch(fetchPostCategoryStart())
         axios

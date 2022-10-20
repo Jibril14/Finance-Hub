@@ -1,7 +1,6 @@
 import * as actionType from "../actions/actionTypes"
 
 const user = JSON.parse(localStorage.getItem("userPass"))
-console.log("User", user)
 
 const initialState = {
     login: user ? user : null,

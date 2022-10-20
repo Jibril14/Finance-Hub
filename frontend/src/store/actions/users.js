@@ -33,10 +33,9 @@ export const registerUser = (userData) => {
         axios.post("/api/v1/auth/users/", userData, config)
             .then(response => {
                 dispatch(createUserSuccess())
-                console.log("data Successful")
             })
             .catch((error) => {
-                console.log("ErrorMessage", error.response.data)
+                //console.log("ErrorMessage", error.response.data)
                 let message = ""
                 for (let x in error.response.data)
                 {

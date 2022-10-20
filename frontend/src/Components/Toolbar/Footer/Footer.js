@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Grid, Typography, Avatar } from "@mui/material";
+import { Grid, Avatar } from "@mui/material";
 import GridLayout from "../../Ui/GridLayout/GridLayout";
 import classes from "./Footer.module.css"
 import { Link } from "react-router-dom";

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPostsCategory } from "../../../store/actions/postsCategory";
@@ -14,7 +14,7 @@ const SidebarData = (props) => {
     const query = props.query;
     useEffect(() => {
         dispatch(fetchPostsCategory(query));
-    }, [query]);
+    }, [dispatch, query]);
 
     return (
         <>

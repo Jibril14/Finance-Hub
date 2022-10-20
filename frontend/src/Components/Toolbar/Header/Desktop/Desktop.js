@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import UserLoginIcon from "@mui/icons-material/AccountCircleOutlined"
 import TwiterIcon from "@mui/icons-material/Twitter"
-import FaceBookIcon from "@mui/icons-material/FacebookOutlined"
 import { logOut } from "../../../../store/actions/users";
 
 export default function Desktop() {

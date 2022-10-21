@@ -100,6 +100,10 @@ const Login = () => {
                     Dont have account?
                     <Linck to="/register"> Register Now</Linck>
                 </Typography>
+                <Typography>
+                    <Typography>For Testing use: testuser@gmail.com</Typography>
+                    <Typography>password: Kbtest_115</Typography>
+                </Typography>
             </Paper>
             {loginError && <p style={{ color: "red" }}>Please Enter a Valid Email & Password</p>}
             {loading && <Spinner2 />}

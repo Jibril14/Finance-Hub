@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'djoser',
-    'django_summernote',
     'django_filters',
     # local apps
     'apps.users',

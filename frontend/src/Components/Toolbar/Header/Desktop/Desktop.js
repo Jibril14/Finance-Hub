@@ -44,7 +44,7 @@ export default function Desktop() {
                     <p style={{ marginTop: "0" }}>Your home of News</p>
                 </div>
                 <Rectangle width="400px" height="50px">
-                    <img src="../../../../Assets/sample2.jpg" width="100%" height="100%" alt="img" />
+                    <img src="https://res.cloudinary.com/webmonc/image/upload/v1677145719/portfolio/blogify-ng/developas-b1z-VG_jY64-city_egxv36.jpg" width="100%" height="100%" alt="img" />
                 </Rectangle>
                 <div>
                     {login ?

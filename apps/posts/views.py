@@ -1,6 +1,3 @@
-from cgitb import lookup
-from msilib.schema import Property
-from urllib import request
 from django.shortcuts import render
 from apps.category.models import Category
 from .pagination import PostPagination

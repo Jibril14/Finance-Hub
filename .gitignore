@@ -9,7 +9,6 @@ node_modules/
 MYDOC
 /.pnp
 .pnp.js
-
 # testing
 coverage
 
@@ -39,7 +38,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
+
 develop-eggs/
 dist/
 downloads/

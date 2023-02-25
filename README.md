@@ -82,6 +82,7 @@ Switch to project directory before running the below commands.
 
  - **RESTful Api** - It follows Rest architectural style
  - **JSON Web Token -JWT** - Secure data transmission b/w this app and it users
+ - **Unit Testing -Pytest** - Manually test each component to ensure it works correctly
  - **Token base authentication - Djoser** - Provides basic view for auth actions
  - **SMTP Email Server -** Email Delivery and Communication for sending and receiving email
  - **Powerful DB Queries- Filtring, Search** - This app provides refine search results of model to user

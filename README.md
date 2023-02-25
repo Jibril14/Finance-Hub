@@ -6,6 +6,18 @@ page will list all posted news from the backend, the detail page is reserved for
 News Hub uses django and django rest framework for it backend and React.js as client side for fetching Api endpoints, and both served on the same server and port!
 
 
+![NewsHub](sample/sample1.png)
+
+![NewsHub](sample/sample2.png)
+
+
+### Live Demo On
+
+https://news-hub-env-2f47.up.railway.app/
+or
+https://news-hub.onrender.com/
+
+
 ## Technologies 
 
 The following technologies were used for this project:
